@@ -17,7 +17,7 @@ public class ConfirmAlert{
         label.setText("Exit Program?");
         Button closeButton = new Button("close Window");
         closeButton.setOnAction(e-> window.close());
-        VBox layout = new VBox(10);
+        VBox layout = new VBox(25);
        
         layout.getChildren().addAll(label,closeButton);
         layout.setAlignment(Pos.CENTER);

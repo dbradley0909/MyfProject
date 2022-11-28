@@ -16,11 +16,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-//import javafx.scene.layout.Background;
 
 public class LoginForm extends Application {
-    
-    Stage window = new Stage();
+    static Stage window = new Stage();
     Scene scene1,scene2;
     @Override
     public void start(Stage primaryStage) {
@@ -55,36 +53,8 @@ public class LoginForm extends Application {
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(newbtn);
         grid.add(hbBtn, 1, 4);
-       ////
-        newbtn.setOnAction(e -> {
-    
-        primaryStage.setTitle("CalorieCounter App");
-        GridPane gridl = new GridPane();
-        gridl.setAlignment(Pos.CENTER);
-        gridl.setHgap(10);
-        gridl.setVgap(10);
-        gridl.setPadding(new Insets(50, 50, 50, 50));
         
-        Text scenetit= new Text("Welcome to \n \t Calorie Counter");
-        scenetitle.setFont(Font.font("Times New Roman", FontWeight.NORMAL, 20));
-        gridl.add(scenetitle, 0, 0, 2, 1);
-
-        Label userNam = new Label("UserName:");
-        gridl.add(userNam, 0, 1);
-
-        TextField userTextFiel = new TextField();
-        userTextFiel.setPromptText("Username");
-        gridl.add(userTextField, 1, 1);
-
-        Label p = new Label("Password:");
-        gridl.add(p, 0, 2);
-
-        PasswordField pwBo = new PasswordField();
-        pwBo.setPromptText("Password");
-        gridl.add(pwBox, 1, 2);
-
-       
-        });
+        
 
         Button nnewbtn = new Button("Sign up");
         HBox nnewhbBtn = new HBox(10);
@@ -99,20 +69,28 @@ public class LoginForm extends Application {
         grid.add(newhbBtnTwo, 1, 6);
 
 
+        
         primaryStage.show();
 
         final Text actiontarget = new Text();
         grid.add(actiontarget, 1, 6);
 
-        newBtnTwo.setOnAction(e -> CloseAlert.display("Title of window", "Are you sure you want to leave"));
-   
+         newBtnTwo.setOnAction(e -> CloseAlert.display("Title of window", "Are you sure you want to leave"));
      
-        Scene scene = new Scene(grid, 400, 375);
-        primaryStage.setScene(scene);
+        Scene scene1 = new Scene(grid, 400, 375);
+        primaryStage.setScene(scene1);
         primaryStage.show();  
         primaryStage.setAlwaysOnTop(true);
-        // bottom code prevents argument from expanding
+        // bottom code prevents argument from expanding 
         primaryStage.setResizable(false);
+       
+    
+        newbtn.setOnAction(e -> {
+            Scene scene2 = new Scene(grid, 500, 475);
+            primaryStage.setScene(scene2);
+      });
+           
+            
     }
     public static void main(String[] args) {
         launch(args);

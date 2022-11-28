@@ -1,13 +1,16 @@
 package projectfx;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
@@ -18,26 +21,37 @@ public class Look extends Application {
     private Scene calorieScene;
 	
     public void start(Stage primaryStage) {
-        VBox calorieStartPane = new VBox(10);
+        primaryStage.setTitle("Calorie Counter App"); // Set the stage title
+        VBox calorieStartPane = new VBox(5);
         calorieStartPane.setAlignment(Pos.CENTER);
-        HBox hBoxStartButtons = new HBox(10);
+        HBox hBoxStartButtons = new HBox(5);
         hBoxStartButtons.setAlignment(Pos.CENTER);
         Button btnExit = new Button("Exit");
         Button calorieStartCalorie = new Button("Start");
-        hBoxStartButtons.getChildren().addAll(calorieStartCalorie, btnExit);
-        HBox hBoxCalorie = new HBox(10);
+        Button nnewbtn = new Button("Sign up");
+        Label label1 = new Label("UserName:");
+        TextField textField1 = new TextField();
+        textField1.setPromptText("Username");
+        Label pw = new Label("Password:");
+        PasswordField pwBox = new PasswordField();
+        pwBox.setPromptText("Password");
+        calorieStartPane.setPadding(new Insets(1, 5 , 5, 1));
+       
+        hBoxStartButtons.getChildren().addAll(calorieStartCalorie,nnewbtn, btnExit);
+        HBox hBoxCalorie = new HBox(5);
+        
         hBoxCalorie.setAlignment(Pos.CENTER);
-        calorieStartPane.getChildren().addAll(new Label("CALORIE COUNTER"), new Label(""), hBoxCalorie, hBoxStartButtons);
+        calorieStartPane.getChildren().addAll(new Label("Welcome to Calorie Counter"),label1,textField1,pw,pwBox,hBoxCalorie,hBoxStartButtons);
 
-        Scene startCalorieScene = new Scene(calorieStartPane, 300, 150);
+        Scene startCalorieScene = new Scene(calorieStartPane, 500, 250);
 
-        btnExit.setOnAction(e -> {
-            primaryStage.close();
-        });
+        btnExit.setOnAction(
+          e -> CloseAlert.display("Title of window", "Are you sure you want to leave"));
+        
 
         calorieStartCalorie.setOnAction(e -> {
             caloriePane calorie = new caloriePane();
-            //calorieScene = new Scene(calorie, 450, 300);
+            calorieScene = new Scene(calorie, 450, 300);
 ///////////////////////////////////////////////////////////////////////////////////			
 			
 			HBox h = new HBox();
@@ -96,9 +110,11 @@ public class Look extends Application {
             primaryStage.setScene(calorieScene);
         });
 
-        primaryStage.setTitle("calorie"); // Set the stage title
-        primaryStage.setScene(startCalorieScene); // Place the scene in the stage
+        primaryStage.setScene(startCalorieScene); 
         primaryStage.show(); // Display the stage
+        primaryStage.setAlwaysOnTop(true);
+        // bottom code prevents argument from expanding 
+        primaryStage.setResizable(false);
     }
 
     public class caloriePane extends BorderPane {
@@ -112,4 +128,8 @@ public class Look extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
+	public static void display() {
+	}
 }
