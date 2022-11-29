@@ -51,20 +51,20 @@ public class Look extends Application {
 
         calorieStartCalorie.setOnAction(e -> {
             caloriePane calorie = new caloriePane();
-            calorieScene = new Scene(calorie, 450, 300);
+            Scene calorieScene = new Scene(calorie, 500, 250);
 ///////////////////////////////////////////////////////////////////////////////////			
 			
 			HBox h = new HBox();
-			final RadioButton m = new RadioButton("male");
-			final RadioButton f = new RadioButton("female");
-			final Label l1 = new Label("Weight in kg");
-			final TextField t1 = new TextField("");
-			final Label l2 = new Label("Size in cm");
-			final TextField t2= new TextField("");
-			final Label l3 = new Label("Age");
-			final TextField t3 = new TextField("");
-			final Label result = new Label("");
-			final ComboBox combo = new ComboBox<String>();
+			RadioButton m = new RadioButton("male \n");
+			RadioButton f = new RadioButton("female \n");
+			Label l1 = new Label("Weight in ibs:");
+			TextField t1 = new TextField("\n");
+			Label l2 = new Label("Size in inches: ");
+			TextField t2= new TextField("\n");
+			Label l3 = new Label("Age");
+			TextField t3 = new TextField("");
+			Label result = new Label("");
+			ComboBox combo = new ComboBox<String>();
 			combo.getItems().setAll("low","little","medium","high");
 			Button b = new Button("Calculate");
 			
@@ -96,11 +96,11 @@ public class Look extends Application {
 					double age = Double.parseDouble(t3.getText());
 					
 					if(m.isSelected()){
-						double caloriesMale = (weight+height-5*age+5)*factor;
+						double caloriesMale = ((weight%2f*0.453)+(height*2.54)-5*age+5)*factor;
 						result.setText(""+caloriesMale);
 								
 					} else{
-						double caloriesFemale = (weight+height-5*age-161)*factor;
+						double caloriesFemale = ((weight%2f*0.453)+(height*2.54)-5*age+5)*factor;
 						result.setText(""+caloriesFemale);
 					}
 					
@@ -112,7 +112,7 @@ public class Look extends Application {
 
         primaryStage.setScene(startCalorieScene); 
         primaryStage.show(); // Display the stage
-        primaryStage.setAlwaysOnTop(true);
+    	primaryStage.setAlwaysOnTop(true);
         // bottom code prevents argument from expanding 
         primaryStage.setResizable(false);
     }
@@ -129,7 +129,4 @@ public class Look extends Application {
         launch(args);
     }
 
-
-	public static void display() {
-	}
 }
